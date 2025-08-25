@@ -195,15 +195,6 @@ O frontend estará disponível em: `http://localhost:4200`
 4. **Visualize** a lista de policiais cadastrados
 5. **Use** os botões "Editar" ou "Excluir" conforme necessário
 
-## 📸 Screenshots
-
-*[Adicione aqui as imagens da aplicação em funcionamento]*
-
-- Tela principal com formulário de cadastro
-- Lista de policiais cadastrados
-- Formulário de edição
-- Banco de dados com matrículas criptografadas
-
 ## 🤝 Contribuição
 
 1. Faça um fork do projeto
