@@ -54,10 +54,10 @@
   <ul class="policiais-list">
     <li class="policiais-item" *ngFor="let policial of policiaisList">
       <span
-        >{{ policial.rg_civil }} || {{ policial.rg_militar }} ||
-        {{ policial.cpf }} ||
-        {{ policial.data_nascimento | date : "dd/MM/yyyy" }} ||
-        {{ policial.matricula }}</span
+        ><strong>RG civil:</strong> {{ policial.rg_civil }} <br /> <strong>RG militar:</strong> {{ policial.rg_militar }} <br />
+        <strong>CPF:</strong> {{ policial.cpf }} <br />
+        <strong>Data de Nascimento:</strong> {{ policial.data_nascimento | date : "dd/MM/yyyy" }} <br />
+        <strong>Matrícula:</strong> {{ policial.matricula }}</span
       >
       <span>
         <button class="policiais-btn" (click)="editar(policial)">Editar</button>
