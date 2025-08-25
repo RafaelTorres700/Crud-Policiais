@@ -13,17 +13,18 @@ import { FormsModule } from '@angular/forms';
 export class PoliciaisComponent implements OnInit {
 
   policiais: Policiais = {
-    rg_civil: 0,
-    rg_militar: 0,
-    cpf: 0,
-    data_nascimento: new Date(),
+    id: undefined,
+    rg_civil: '',
+    rg_militar: '',
+    cpf: '',
+    data_nascimento: null,
     matricula: ''
   };
 
   policiaisList: Policiais[] = [];
   editando: boolean = false;
 
-  constructor(private policiaisService: PoliciaisService) { }
+  constructor(private policiaisService: PoliciaisService) {}
 
   ngOnInit(): void {
     this.carregarPoliciais();
@@ -38,7 +39,7 @@ export class PoliciaisComponent implements OnInit {
 
   salvar(): void {
     if (this.editando) {
-      this.policiaisService.atualizar(this.policiais.rg_civil, this.policiais).subscribe(
+      this.policiaisService.atualizar(this.policiais.id!, this.policiais).subscribe(
         () => {
           alert('Policial atualizado com sucesso!');
           this.resetarFormulario();
@@ -75,10 +76,11 @@ export class PoliciaisComponent implements OnInit {
 
   resetarFormulario(): void {
     this.policiais = {
-      rg_civil: 0,
-      rg_militar: 0,
-      cpf: 0,
-      data_nascimento: new Date(),
+      id: undefined,
+      rg_civil: '',
+      rg_militar: '',
+      cpf: '',
+      data_nascimento: null,
       matricula: ''
     };
     this.editando = false;
