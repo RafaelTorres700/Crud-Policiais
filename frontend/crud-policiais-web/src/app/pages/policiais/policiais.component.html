@@ -1,0 +1,74 @@
+<p>policiais works!</p>
+
+<div class="policiais-container">
+  <form class="policiais-form" (ngSubmit)="salvar()">
+    <input
+      class="policiais-input"
+      [(ngModel)]="policiais.rg_civil"
+      name="rg_civil"
+      placeholder="RG Civil"
+      required
+    />
+    <input
+      class="policiais-input"
+      [(ngModel)]="policiais.rg_militar"
+      name="rg_militar"
+      placeholder="RG Militar"
+      required
+    />
+    <input
+      class="policiais-input"
+      [(ngModel)]="policiais.cpf"
+      name="cpf"
+      placeholder="CPF"
+      required
+      pattern="\d{11}"
+      title="CPF deve conter 11 dígitos."
+    />
+    <input
+      class="policiais-input"
+      [(ngModel)]="policiais.data_nascimento"
+      name="data_nascimento"
+      type="date"
+      placeholder="dd/mm/aaaa"
+      required
+    />
+    <input
+      class="policiais-input"
+      [(ngModel)]="policiais.matricula"
+      name="matricula"
+      placeholder="Matrícula"
+      required
+    />
+    <button class="policiais-btn" type="submit">
+      {{ editando ? "Atualizar" : "Adicionar" }}
+    </button>
+    <button
+      class="policiais-btn policiais-btn-cancel"
+      type="button"
+      (click)="resetarFormulario()"
+      *ngIf="editando"
+    >
+      Cancelar
+    </button>
+  </form>
+  <ul class="policiais-list">
+    <li class="policiais-item" *ngFor="let policial of policiaisList">
+      <span
+        >{{ policial.rg_civil }} || {{ policial.rg_militar }} ||
+        {{ policial.cpf }} ||
+        {{ policial.data_nascimento | date : "dd/MM/yyyy" }} ||
+        {{ policial.matricula }}</span
+      >
+      <span>
+        <button class="policiais-btn" (click)="editar(policial)">Editar</button>
+        <button
+          class="policiais-btn policiais-btn-cancel"
+          (click)="excluir(policial.rg_civil)"
+        >
+          Excluir
+        </button>
+      </span>
+    </li>
+  </ul>
+</div>

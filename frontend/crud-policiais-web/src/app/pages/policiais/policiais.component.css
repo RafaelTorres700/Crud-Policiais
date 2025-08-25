@@ -1,0 +1,59 @@
+.policiais-container {
+  background-color: #f0f8ff;
+  padding: 20px;
+  border-radius: 8px;
+  max-width: 600px;
+  margin: auto;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.policiais-form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.policiais-input {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 16px;
+}
+
+.policiais-btn {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 10px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.policiais-btn:hover {
+  background-color: #0056b3;
+}
+
+.policiais-btn-cancel {
+  background-color: #dc3545;
+}
+
+.policiais-btn-cancel:hover {
+  background-color: #a71d2a;
+}
+
+.policiais-list {
+  list-style: none;
+  padding: 0;
+  margin-top: 20px;
+}
+
+.policiais-item {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  margin-bottom: 10px;
+  background-color: white;
+}
