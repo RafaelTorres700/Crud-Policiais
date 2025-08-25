@@ -24,7 +24,7 @@ export class PoliciaisComponent implements OnInit {
   policiaisList: Policiais[] = [];
   editando: boolean = false;
 
-  constructor(private policiaisService: PoliciaisService) {}
+  constructor(private policiaisService: PoliciaisService) { }
 
   ngOnInit(): void {
     this.carregarPoliciais();
