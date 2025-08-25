@@ -9,42 +9,33 @@ exports.getAll = (req, res) => {
     })
 }
 
-// Buscar game por ID
-// exports.getById = (req, res) => {
-//     const { id } = req.params
-//     const sql = 'SELECT * FROM policiais WHERE id = ?'
-//     db.query(sql, [id], (erro, resultado) => {
-//         if (erro) return res.status(500).json({ erro: 'Erro interno do servidor' })
-//         if (resultado.length === 0) return res.status(404).json({ erro: 'Game não encontrado' })
-//         res.status(200).json(resultado[0])
-//     })
-// }
+
 
 // Criar registros na tabela policiais
 exports.create = (req, res) => {
-    const { nome, tipo, ano } = req.body
-    if (!nome || !tipo || !ano) {
-        return res.status(400).json({ erro: 'Nome, tipo e ano são obrigatórios' })
+    const { rg_civil, rg_militar, cpf, data_nascimento, matricula } = req.body
+    if (!rg_civil || !rg_militar || !cpf || !data_nascimento || !matricula) {
+        return res.status(400).json({ erro: 'Todos os campos são obrigatórios' })
     }
-    const sql = 'INSERT INTO policiais (nome, tipo, ano) VALUES (?, ?, ?)'
-    db.query(sql, [nome, tipo, ano], (erro, resultado) => {
+    const sql = 'INSERT INTO policiais (rg_civil, rg_militar, cpf, data_nascimento, matricula) VALUES (?, ?, ?, ?, ?)'
+    db.query(sql, [rg_civil, rg_militar, cpf, data_nascimento, matricula], (erro, resultado) => {
         if (erro) return res.status(500).json({ erro: 'Erro interno do servidor' })
-        res.status(201).json({ mensagem: 'Game criado com sucesso!', id: resultado.insertId })
+        res.status(201).json({ mensagem: 'Policiais cadastrados com sucesso!', id: resultado.insertId })
     })
 }
 
 // Atualizar registros da tabela policiais
 exports.update = (req, res) => {
     const { id } = req.params
-    const { nome, tipo, ano } = req.body
-    if (!nome || !tipo || !ano) {
-        return res.status(400).json({ erro: 'Nome, tipo e ano são obrigatórios' })
+    const { rg_civil, rg_militar, cpf, data_nascimento, matricula } = req.body
+    if (!rg_civil || !rg_militar || !cpf || !data_nascimento || !matricula) {
+        return res.status(400).json({ erro: 'Todos os campos são obrigatórios' })
     }
-    const sql = 'UPDATE policiais SET nome = ?, tipo = ?, ano = ? WHERE id = ?'
-    db.query(sql, [nome, tipo, ano, id], (erro, resultado) => {
+    const sql = 'UPDATE policiais SET rg_civil = ?, rg_militar = ?, cpf = ?, data_nascimento = ?, matricula = ? WHERE id = ?'
+    db.query(sql, [rg_civil, rg_militar, cpf, data_nascimento, matricula, id], (erro, resultado) => {
         if (erro) return res.status(500).json({ erro: 'Erro interno do servidor' })
-        if (resultado.affectedRows === 0) return res.status(404).json({ erro: 'Game não encontrado' })
-        res.status(200).json({ mensagem: 'Game atualizado com sucesso!' })
+        if (resultado.affectedRows === 0) return res.status(404).json({ erro: 'Policial não encontrado' })
+        res.status(200).json({ mensagem: 'Policial atualizado com sucesso!' })
     })
 }
 
@@ -54,7 +45,7 @@ exports.delete = (req, res) => {
     const sql = 'DELETE FROM policiais WHERE id = ?'
     db.query(sql, [id], (erro, resultado) => {
         if (erro) return res.status(500).json({ erro: 'Erro interno do servidor' })
-        if (resultado.affectedRows === 0) return res.status(404).json({ erro: 'Game não encontrado' })
-        res.status(204).send()
+        if (resultado.affectedRows === 0) return res.status(404).json({ erro: 'Policial não encontrado' })
+        res.status(204).json({ mensagem: 'Policial excluído com sucesso!' })
     })
 }
